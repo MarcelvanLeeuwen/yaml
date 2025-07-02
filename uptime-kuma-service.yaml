@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: uptime-kuma-service
+  labels:
+    app: uptime-kuma
+spec:
+  selector:
+    app: uptime-kuma
+  ports:
+    - protocol: TCP
+      port: 3001        # poort waarop de service luistert binnen het cluster
+      targetPort: 3001  # poort waarop de app in de pod draait
+      nodePort: 30001
+  type: NodePort
