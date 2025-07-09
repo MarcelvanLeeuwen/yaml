@@ -16,6 +16,13 @@ spec:
     spec:
       containers:
         - name: uptime-kuma
-          image: elestio/uptime-kuma:latest
+          image: louislam/uptime-kuma:final
           ports:
             - containerPort: 3001
+          volumeMounts:
+            - mountPath: /app/data
+              name: uptime-kuma-volume
+      volumes:
+        - name: uptime-kuma-volume
+          persistentVolumeClaim:
+            claimName: uptime-kuma-pvc
